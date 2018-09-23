@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: demac
+  password: demac
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: demac_interview_development
+
+test:
+  <<: *default
+  database: demac_interview_test
+
+production:
+  <<: *default
+  database: demac_interview_production
+  username: demac
+  password: <%= ENV['DEMAC-INTERVIEW2_DATABASE_PASSWORD'] %>
